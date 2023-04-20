@@ -6,6 +6,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { Istudent } from 'src/app/interfaces/istudent';
 
@@ -14,7 +15,7 @@ import { Istudent } from 'src/app/interfaces/istudent';
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.scss'],
   standalone: true,
-  imports: [IonicModule],
+  imports: [IonicModule, RouterModule],
 })
 export class StudentComponent implements OnChanges {
   // student data is input to allow student_data to be used in the child component

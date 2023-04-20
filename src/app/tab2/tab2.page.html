@@ -1,6 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Add Student </ion-title>
+    <ion-title *ngIf="isEdit"> Edit Student </ion-title>
+    <ion-title *ngIf="!isEdit"> Add Student </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -35,7 +36,11 @@
       </ion-item>
 
       <ion-item>
-        <ion-select aria-label="Department" placeholder="Select a Department">
+        <ion-select
+          aria-label="Department"
+          formControlName="dept_id"
+          placeholder="Select a Department"
+        >
           <ion-select-option *ngFor="let dept of departments" [value]="dept.id"
             >{{dept.title}}</ion-select-option
           >

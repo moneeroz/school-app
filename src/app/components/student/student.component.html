@@ -6,5 +6,10 @@
 
   <ion-card-content>
     <ion-button (click)="onDelete()"> Delete </ion-button>
+    <ion-button
+      [routerLink]="['/tabs/tab2/edit-student', student_data.id]"
+      routerLinkActive="router-link-active"
+      >Edit</ion-button
+    >
   </ion-card-content>
 </ion-card>

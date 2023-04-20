@@ -63,7 +63,7 @@ export class Tab1Page implements OnInit {
                 console.log(result);
               });
 
-            // Delte student from UI display
+            // Delete student from UI display
             let index = this.students.findIndex((item) => {
               // Get student index from array
               return item.id === student_id;

@@ -5,19 +5,19 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
+import { AlertController, IonicModule } from '@ionic/angular';
 import { Idepartment } from '../interfaces/idepartment';
 import { StudentsService } from '../services/studnets.service';
 import { DepartmentsService } from '../services/departments.service';
 import { ActivatedRoute } from '@angular/router';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss'],
   standalone: true,
-  imports: [IonicModule, FormsModule, ReactiveFormsModule, NgFor],
+  imports: [IonicModule, FormsModule, ReactiveFormsModule, NgFor, NgIf],
 })
 export class Tab2Page {
   studentForm;
@@ -29,7 +29,8 @@ export class Tab2Page {
     private formBuilder: FormBuilder,
     private studentService: StudentsService,
     private departmentService: DepartmentsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alertController: AlertController,
   ) {
     this.studentForm = formBuilder.group({
       name: ['', [Validators.required]], //1st item in array sets up the default value
@@ -67,15 +68,26 @@ export class Tab2Page {
         .subscribe((results) => {
           console.log(results);
 
-          alert('Student updated successfully!');
+          this.showAlert('Edit Student', 'Student updated successfully!');
         });
     } else {
       this.studentService.createStudent(student_data).subscribe((results) => {
         console.log(results);
 
         this.studentForm.reset(); // clears all form inputs after submit
-        alert('Student created successfully!');
+        this.showAlert('Create Student', 'Student created successfully!');
       });
     }
+  }
+
+  async showAlert(title: string, message: string) {
+    const alert = await this.alertController.create({
+      header: title,
+
+      message: message,
+      buttons: ['OK'],
+    });
+
+    await alert.present();
   }
 }
