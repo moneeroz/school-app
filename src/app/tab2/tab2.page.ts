@@ -33,7 +33,7 @@ export class Tab2Page {
     private alertController: AlertController,
   ) {
     this.studentForm = formBuilder.group({
-      name: ['', [Validators.required]], //1st item in array sets up the default value
+      name: ['', [Validators.required, Validators.minLength(3)]], //1st item in array sets up the default value
       age: [0, [Validators.required]],
       country: ['', [Validators.required]],
       dept_id: [0, [Validators.required]],
@@ -89,5 +89,23 @@ export class Tab2Page {
     });
 
     await alert.present();
+  }
+
+  // Getter method
+  // All the methods below return a form control
+  get nameFormControl() {
+    return this.studentForm.get('name');
+  }
+
+  get ageFormControl() {
+    return this.studentForm.get('age');
+  }
+
+  get countryFormControl() {
+    return this.studentForm.get('country');
+  }
+
+  get departmentFormControl() {
+    return this.studentForm.get('dept_id');
   }
 }

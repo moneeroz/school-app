@@ -16,6 +16,18 @@
           type="text"
         ></ion-input>
       </ion-item>
+      <ion-item
+        color="danger"
+        *ngIf="nameFormControl!.touched && nameFormControl!.errors?.['required']"
+      >
+        The name field is required
+      </ion-item>
+      <ion-item
+        color="danger"
+        *ngIf="nameFormControl!.dirty && nameFormControl!.errors?.['minlength']"
+      >
+        The name field must be at least 3 characters
+      </ion-item>
 
       <ion-item>
         <ion-input
@@ -24,6 +36,12 @@
           formControlName="age"
           type="number"
         ></ion-input>
+      </ion-item>
+      <ion-item
+        color="danger"
+        *ngIf="ageFormControl!.touched && ageFormControl!.errors?.['required']"
+      >
+        The age field is required
       </ion-item>
 
       <ion-item>
@@ -45,6 +63,12 @@
             >{{dept.title}}</ion-select-option
           >
         </ion-select>
+      </ion-item>
+      <ion-item
+        color="danger"
+        *ngIf="departmentFormControl!.touched && departmentFormControl!.errors?.['required']"
+      >
+        The department field is required
       </ion-item>
 
       <ion-button (click)="onSubmit()"> Submit </ion-button>
