@@ -11,4 +11,13 @@
       (deleteEvent)="deleteStudent($event)"
     ></app-student>
   </div>
+
+  <!-- We can not use the first ionic alert because it's linked to an id and we can not have multiple elements with the same id -->
+  <!-- <ion-alert
+    [isOpen]="isDeleteAlertOpen"
+    header="Delete"
+    message="Are you sure you want to delete student!"
+    [buttons]="deleteButtons"
+    (didDismiss)="setDeleteOpen(false)"
+  ></ion-alert> -->
 </ion-content>
