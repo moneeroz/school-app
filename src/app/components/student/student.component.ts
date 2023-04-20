@@ -22,14 +22,8 @@ export class StudentComponent implements OnChanges {
   @Output() deleteEvent = new EventEmitter(); // custom event
 
   onDelete() {
-    if (
-      confirm(
-        `Are you sure you want to delete ${this.student_data.name}'s record?`
-      )
-    ) {
-      // emit() takes one argument if you want to send more use an array or an object
-      this.deleteEvent.emit(this.student_data.id); // Triggering our custom event
-    }
+    // emit() takes one argument if you want to send more use an array or an object
+    this.deleteEvent.emit(this.student_data.id); // Triggering our custom event
   }
 
   ngOnChanges(changes: SimpleChanges): void {
