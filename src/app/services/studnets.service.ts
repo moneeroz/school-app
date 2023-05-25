@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Istudent } from '../interfaces/istudent';
+import { API_URL } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StudentsService {
   constructor(private http: HttpClient) {}
-  url = 'http://localhost:3000/students';
+  url = API_URL;
 
   getStudents() {
     return this.http.get<Istudent[]>(this.url);
